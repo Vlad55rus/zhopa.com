@@ -1,0 +1,35 @@
+.background {
+    background-color: rgba(57, 213, 100, 0.55);
+}
+
+#header {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#header li {
+    display: inline;
+    border: #f6f5f2 solid 4px;
+}
+#header a{
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Ubuntu;
+    display: inline-block;
+    width: 333px;
+}
+
+.loginForm {
+    border: white solid 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+.headerText {
+    font-family: Ubuntu;
+    font-size: 16px;
+}
