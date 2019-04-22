@@ -2,9 +2,8 @@
 
 class admins_model extends abstract_model {
     public function get_data() {
-        $mysqli = DataBase::getInstance();
+        $mysql = DataBase::getInstance();
         $query = "SELECT * FROM Admins";
-        $result = $mysqli->query($query);
-        return $result;
+        return $mysql->query($query);
     }
 }

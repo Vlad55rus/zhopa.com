@@ -5,12 +5,16 @@ class admins_view extends abstract_view {
     public function generate($template_view, $data = null) {
         ob_start();
         include 'views/' . $template_view;
-        $rows = mysqli_num_rows($data);
-        for ($i = 0; $i < $rows; $i++) {
-            $rows = mysqli_fetch_row($data);
-            for ($j = 0; $j < 2; $j++) {
-                echo $rows[$j];
-            }
+        echo "<table id='mainTable' align='center'>
+         <tr>
+            <th>Admin Id</th>
+            <th>Admin Name</th>
+         </tr>";
+        foreach ($data as $row) {
+            echo "<tr>";
+            echo '<th>' . $row['adminID'] . '</th>';
+            echo '<th>' . $row['adminName'] . '</th>';
+            echo '</tr>';
         }
         return ob_get_clean();
     }

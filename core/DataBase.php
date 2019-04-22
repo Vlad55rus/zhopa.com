@@ -6,10 +6,11 @@ class DataBase {
     private static $user = 'root';
     private static $password = '123';
     private static $dbname = 'SuperClub';
+    private static $dbtype = 'mysql:';
 
     private function __construct() {
-        self::$instance = new mysqli(self::$host, self::$user, self::$password, self::$dbname);
-        self::$instance->query("SET NAMES utf-8;");
+        self::$instance = new PDO(self::$dbtype . 'host=' . self::$host . ';dbname=' . self::$dbname,
+                self::$user, self::$password);
     }
 
     public static function getInstance() {
@@ -17,13 +18,13 @@ class DataBase {
             return new self();
         } else return self::$instance;
     }
-    public function query($query)
-    {
+
+    public static function query($query) {
         return self::$instance->query($query);
     }
 
     public static function closeConnection() {
         if (self::$instance != null)
-            self::$instance->close();
+            self::$instance = null;
     }
 }

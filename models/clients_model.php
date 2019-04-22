@@ -1,6 +1,7 @@
 <?php
 class clients_model extends abstract_model{
     public function get_data() {
-        // TODO: Implement get_data() method.
+        $mysql = DataBase::getInstance();
+        return $mysql->query('Select * from Clients');
     }
 }

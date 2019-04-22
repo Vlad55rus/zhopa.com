@@ -1,17 +1,25 @@
 <?php
 include 'core/abstract_view.php';
-
 class dr_view extends abstract_view {
     public function generate($template_view, $data = null) {
         ob_start();
         include 'views/' . $template_view;
-        $rows = mysqli_num_rows($data);
-        for ($i = 0; $i < $rows; $i++) {
-            $rows = mysqli_fetch_row($data);
-            for ($j = 0; $j < 4; $j++) {
-                echo $rows[$j];
-            }
+        echo "<table id='mainTable' align='center'>
+         <tr>
+            <th>Client Id</th>
+            <th>Admin Id</th>
+            <th>Computer Number</th>
+            <th>Duration</th>
+         </tr>";
+        foreach ($data as $row) {
+            echo "<tr>";
+            echo '<th>' . $row['ClientID'] . '</th>';
+            echo '<th>' . $row['adminID'] . '</th>';
+            echo '<th>' . $row['ComputerNumber'] . '</th>';
+            echo '<th>' . $row['Duration'] . '</th>';
+            echo '</tr>';
         }
+        echo '</table>';
         return ob_get_clean();
     }
 }
